@@ -1,5 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { RatingModule } from "ng-starrating";
+
 import { NadvarComponent } from "./nadvar/nadvar.component";
 import { HeaderComponent } from "./header/header.component";
 import { FooterComponent } from "./footer/footer.component";
@@ -20,7 +22,7 @@ const declarations = [
 
 @NgModule({
   declarations: [...declarations],
-  imports: [CommonModule, RouterModule, PipesModule],
+  imports: [CommonModule, RouterModule, PipesModule, RatingModule],
   exports: [...declarations],
 })
 export class ComponentsModule {}

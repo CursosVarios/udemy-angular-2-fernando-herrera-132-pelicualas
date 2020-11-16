@@ -5,4 +5,6 @@
     </div>
 </div>
 <h2 class="mt-5 text-center">Peliculas</h2>
-<app-peliculas-poster-grid></app-peliculas-poster-grid>
+
+<app-peliculas-poster-grid [movies]="movies" *ngIf="movies && movies.length>0">
+</app-peliculas-poster-grid>
