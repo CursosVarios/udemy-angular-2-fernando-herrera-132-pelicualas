@@ -6,6 +6,8 @@ import { FooterComponent } from "./footer/footer.component";
 import { PeliculasCardComponent } from "./card/peliculas-card/peliculas-card.component";
 import { RouterModule } from "@angular/router";
 import { SlideshowComponent } from "./slider/slideshow/slideshow.component";
+import { PipesModule } from "../pipes/pipes.module";
+import { PeliculasPosterGridComponent } from "./card/peliculas-poster-grid/peliculas-poster-grid.component";
 
 const declarations = [
   NadvarComponent,
@@ -13,11 +15,12 @@ const declarations = [
   FooterComponent,
   PeliculasCardComponent,
   SlideshowComponent,
+  PeliculasPosterGridComponent,
 ];
 
 @NgModule({
   declarations: [...declarations],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, PipesModule],
   exports: [...declarations],
 })
 export class ComponentsModule {}
