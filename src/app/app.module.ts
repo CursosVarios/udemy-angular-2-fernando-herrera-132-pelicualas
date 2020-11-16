@@ -6,9 +6,10 @@ import { AppComponent } from "./app.component";
 import { ComponentsModule } from "./components/components.module";
 import { PipesModule } from "./pipes/pipes.module";
 import { PagesModule } from "./pages/pages.module";
+import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule,HttpClientModule, ComponentsModule, PipesModule, PagesModule],
+  imports: [BrowserModule,HttpClientModule, ComponentsModule, PipesModule, PagesModule,AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
