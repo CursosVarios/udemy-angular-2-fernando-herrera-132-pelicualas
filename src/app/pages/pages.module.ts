@@ -8,7 +8,7 @@ const declarations = [HomeComponent, PeliculaComponent, BuscarComponent];
 
 @NgModule({
   declarations: [...declarations],
-  imports: [CommonModule],
+  imports: [CommonModule, CommonModule],
   exports: [...declarations],
 })
 export class PagesModule {}
