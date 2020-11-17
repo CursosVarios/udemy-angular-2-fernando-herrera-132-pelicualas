@@ -27,8 +27,8 @@ export class HomeComponent implements OnInit {
   constructor(private _peliculasService: PeliculasService) {
     _peliculasService.GetCartelera().subscribe((resp) => {
       // console.log(resp);
+      this.moviesSlide = [...resp];
       this.movies = resp;
-      this.moviesSlide = resp;
     });
   }
 
