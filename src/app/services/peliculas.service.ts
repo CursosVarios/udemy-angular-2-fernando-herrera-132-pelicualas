@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { tap, take, map } from "rxjs/operators";
 import { environment } from "src/environments/environment";
 import { CartelerasModel } from "../interfaces/carteleras.model";
+import { MovieDetailsModel } from "../interfaces/movie-details.model";
 import { MovieModel } from "../interfaces/movie.model";
 
 @Injectable({
@@ -57,5 +58,31 @@ export class PeliculasService {
   }
   ResetPages() {
     this.page = 1;
+  }
+
+  DetallesPelicula(id_pelicula: string): Observable<MovieDetailsModel> {
+    const params = { ...this.params };
+    return this._http
+      .get<MovieDetailsModel>(`${this._urlApi}movie/${id_pelicula}`, {
+        params,
+      })
+      .pipe(
+        map((resp) => resp),
+        tap(() => {}),
+        take(1)
+      );
+  }
+
+  CastingPelicula(id_pelicula: string): Observable<MovieModel[]> {
+    const params = { ...this.params };
+    return this._http
+      .get<CartelerasModel>(`${this._urlApi}search/movie`, {
+        params,
+      })
+      .pipe(
+        map((resp) => resp.results),
+        tap(() => {}),
+        take(1)
+      );
   }
 }
