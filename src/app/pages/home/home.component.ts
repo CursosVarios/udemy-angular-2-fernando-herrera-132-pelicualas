@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from "@angular/core";
+import { Component, HostListener, OnDestroy, OnInit } from "@angular/core";
 import { of } from "rxjs";
 import { MovieModel } from "src/app/interfaces/movie.model";
 import { PeliculasService } from "src/app/services/peliculas.service";
@@ -8,7 +8,7 @@ import { PeliculasService } from "src/app/services/peliculas.service";
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   public movies: MovieModel[];
   public moviesSlide: MovieModel[];
   private cargando: boolean = false;
@@ -33,4 +33,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this._peliculasService.ResetPages();
+  }
 }

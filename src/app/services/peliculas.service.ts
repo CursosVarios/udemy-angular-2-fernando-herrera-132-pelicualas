@@ -17,13 +17,22 @@ export class PeliculasService {
   constructor(private _http: HttpClient) {
     this.page = 1;
   }
+
+  get params() {
+    return {
+      api_key: this._keyApi,
+      language: "",
+      page: this.page.toString(),
+    };
+  }
+
   GetCartelera(): Observable<MovieModel[]> {
     console.log("respuesta");
     this.loadCartelera = true;
     return this._http
-      .get<CartelerasModel>(
-        `${this._urlApi}movie/now_playing?api_key=${this._keyApi}&language=es-Es&page=${this.page}`
-      )
+      .get<CartelerasModel>(`${this._urlApi}movie/now_playing`, {
+        params: { ...this.params },
+      })
       .pipe(
         map((resp) => resp.results),
         tap(() => {
@@ -32,5 +41,21 @@ export class PeliculasService {
         }),
         take(1)
       );
+  }
+
+  BuscarPeliculas(busqueda: string): Observable<MovieModel[]> {
+    const params = { ...this.params, page: "1", query: busqueda };
+    return this._http
+      .get<CartelerasModel>(`${this._urlApi}search/movie`, {
+        params,
+      })
+      .pipe(
+        map((resp) => resp.results),
+        tap(() => {}),
+        take(1)
+      );
+  }
+  ResetPages() {
+    this.page = 1;
   }
 }
