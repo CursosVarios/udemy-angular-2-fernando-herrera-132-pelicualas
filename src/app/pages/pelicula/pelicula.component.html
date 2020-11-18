@@ -22,3 +22,8 @@
         </div>
     </div>
 </div>
+<div class="row" *ngIf="casting.length > 0">
+    <div class="col">
+        <app-cast-slideshow [cast]="casting"></app-cast-slideshow>
+    </div>
+</div>

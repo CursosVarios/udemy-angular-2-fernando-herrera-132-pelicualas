@@ -1,0 +1,12 @@
+<div class="swiper-container">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide text-white text-center" *ngFor="let cas of cast">
+            <img class="img-thumbnail" [src]="cas.profile_path |noImage" [alt]="cas.name"> {{cas.name}}
+        </div>
+        <!-- If we need pagination -->
+
+        <!-- If we need navigation buttons -->
+
+    </div>

@@ -1,9 +1,10 @@
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { tap, take, map } from "rxjs/operators";
+import { Observable, of } from "rxjs";
+import { tap, take, map, catchError } from "rxjs/operators";
 import { environment } from "src/environments/environment";
 import { CartelerasModel } from "../interfaces/carteleras.model";
+import { creditsModel, CastModel } from "../interfaces/credits.model";
 import { MovieDetailsModel } from "../interfaces/movie-details.model";
 import { MovieModel } from "../interfaces/movie.model";
 
@@ -69,20 +70,21 @@ export class PeliculasService {
       .pipe(
         map((resp) => resp),
         tap(() => {}),
-        take(1)
+        take(1),
+        catchError((err) => of(null))
       );
   }
 
-  CastingPelicula(id_pelicula: string): Observable<MovieModel[]> {
+  CastingPelicula(id_pelicula: string): Observable<CastModel[]> {
     const params = { ...this.params };
     return this._http
-      .get<CartelerasModel>(`${this._urlApi}search/movie`, {
+      .get<creditsModel>(`${this._urlApi}movie/${id_pelicula}/credits`, {
         params,
       })
       .pipe(
-        map((resp) => resp.results),
-        tap(() => {}),
-        take(1)
+        map((resp) => resp.cast),
+        take(1),
+        catchError((err) => of([]))
       );
   }
 }

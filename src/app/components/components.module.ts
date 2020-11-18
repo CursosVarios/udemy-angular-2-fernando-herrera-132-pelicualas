@@ -10,6 +10,7 @@ import { RouterModule } from "@angular/router";
 import { SlideshowComponent } from "./slider/slideshow/slideshow.component";
 import { PipesModule } from "../pipes/pipes.module";
 import { PeliculasPosterGridComponent } from "./card/peliculas-poster-grid/peliculas-poster-grid.component";
+import { CastSlideshowComponent } from "./slider/cast-slideshow/cast-slideshow.component";
 
 const declarations = [
   NadvarComponent,
@@ -18,6 +19,7 @@ const declarations = [
   PeliculasCardComponent,
   SlideshowComponent,
   PeliculasPosterGridComponent,
+  CastSlideshowComponent,
 ];
 
 @NgModule({
